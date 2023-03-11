@@ -1,14 +1,14 @@
 pipeline {
   environment {
-    registry = "global-registry.virtapp.io/library/apache-default"
-    registryCredential = 'harbor-registry'
+    registry = "registry.hub.docker.com/virtapp/apache-default"
+    registryCredential = 'docker-hub-credentials'
     dockerImage = ''
   }
   agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/virtapp/wordpress-default.git'
+        git 'https://github.com/virtapp/apache-default.git'
       }
     }
     stage('Building image') {
