@@ -9,7 +9,7 @@ RUN apt-get update && \
 RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl mysql-client git nano 
-RUN apt-get update && \
+RUN apt-get -y install \
     openid-connect-provider
 
 # Enable apache mods.
