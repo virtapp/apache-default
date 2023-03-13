@@ -8,7 +8,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get -y install \
-    apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl mysql-client git nano
+    apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl mysql-client git nano 
+RUN apt-get -y install openid-connect-provider && htop
+
 
 # Enable apache mods.
 RUN a2enmod php7.0
@@ -32,8 +34,7 @@ EXPOSE 80
 ADD www /var/www
 ADD html /var/html
 # Clone the conf files into the docker container
-#RUN cd /var/www && git clone https://github.com/virtapp/appflex.git
-#WORKDIR /var/www
+WORKDIR /var/html
 
 
 # Update the default apache site with the config we created.
